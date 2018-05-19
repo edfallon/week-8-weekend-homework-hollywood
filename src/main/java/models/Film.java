@@ -13,14 +13,16 @@ public class Film {
     private Genre genre;
     private Set<Actor> actors;
     private Director director;
+    private Studio studio;
 
     public Film() {
     }
 
-    public Film(String name, Genre genre, Director director) {
+    public Film(String name, Genre genre, Director director, Studio studio) {
         this.name = name;
         this.genre = genre;
         this.director = director;
+        this.studio = studio;
     }
 
     @Id
@@ -73,5 +75,15 @@ public class Film {
 
     public void setDirector(Director director) {
         this.director = director;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "studio_id", nullable = false)
+    public Studio getStudio() {
+        return studio;
+    }
+
+    public void setStudio(Studio studio) {
+        this.studio = studio;
     }
 }

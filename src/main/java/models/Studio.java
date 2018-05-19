@@ -13,6 +13,7 @@ public class Studio {
     private String name;
     private double budget;
     private Set<Director> directors;
+    private Set<Film> films;
 
     public Studio() {
     }
@@ -21,6 +22,7 @@ public class Studio {
         this.name = name;
         this.budget = budget;
         this.directors = new HashSet<Director>();
+        this.films = new HashSet<Film>();
     }
 
     @Id
@@ -67,5 +69,14 @@ public class Studio {
 
     public void addDirector(Director director){
         this.directors.add(director);
+    }
+
+    @OneToMany(mappedBy = "studio")
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
     }
 }
