@@ -65,6 +65,8 @@ public class Film {
         this.actors = actors;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "director_id", nullable = false)
     public Director getDirector() {
         return director;
     }

@@ -20,8 +20,8 @@ public class Actor extends Person{
     }
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "person_film",
-            joinColumns = {@JoinColumn(name = "person_id", nullable = false, updatable = false)},
+    @JoinTable(name = "actor_film",
+            joinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)}
     )
     public Set<Film> getFilms() {

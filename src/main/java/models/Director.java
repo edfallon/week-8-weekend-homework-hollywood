@@ -19,6 +19,7 @@ public class Director extends Person {
     public Director(String name, double money) {
         super(name, money);
         this.films = new HashSet<Film>();
+        this.studios = new HashSet<Studio>();
     }
 
     @ManyToMany(cascade = CascadeType.PERSIST)
@@ -34,11 +35,7 @@ public class Director extends Person {
         this.studios = studios;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "person_film",
-            joinColumns = {@JoinColumn(name = "person_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)}
-    )
+    @OneToMany(mappedBy = "director")
     public Set<Film> getFilms() {
         return films;
     }
