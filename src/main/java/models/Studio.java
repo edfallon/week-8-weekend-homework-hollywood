@@ -1,6 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Set;
+
+@Entity
+@Table(name="studios")
 
 public class Studio {
 
@@ -17,6 +21,9 @@ public class Studio {
         this.budget = budget;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -25,6 +32,7 @@ public class Studio {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -33,6 +41,7 @@ public class Studio {
         this.name = name;
     }
 
+    @Column(name = "budget")
     public double getBudget() {
         return budget;
     }
@@ -41,6 +50,11 @@ public class Studio {
         this.budget = budget;
     }
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "studio_director",
+            inverseJoinColumns = {@JoinColumn(name = "studio_id", nullable = false, updatable = false)},
+            joinColumns = {@JoinColumn(name = "director_id", nullable = false, updatable = false)}
+    )
     public Set<Director> getDirectors() {
         return directors;
     }

@@ -1,6 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.Set;
+
+@Entity
+@Table(name="films")
 
 public class Film {
 
@@ -19,6 +23,9 @@ public class Film {
         this.director = director;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -27,6 +34,7 @@ public class Film {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -35,6 +43,7 @@ public class Film {
         this.name = name;
     }
 
+    @Enumerated(EnumType.STRING)
     public Genre getGenre() {
         return genre;
     }
@@ -43,6 +52,11 @@ public class Film {
         this.genre = genre;
     }
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "person_film",
+            inverseJoinColumns = {@JoinColumn(name = "person_id", nullable = false, updatable = false)},
+            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)}
+    )
     public Set<Actor> getActors() {
         return actors;
     }

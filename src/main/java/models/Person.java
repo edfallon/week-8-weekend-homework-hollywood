@@ -1,8 +1,7 @@
 package models;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,7 +12,7 @@ public abstract class Person {
     private int id;
     private String name;
     private double money;
-    private Set<Film> films;
+
 
 
     public Person() {
@@ -22,8 +21,12 @@ public abstract class Person {
     public Person(String name, double money) {
         this.name = name;
         this.money = money;
+
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -32,6 +35,7 @@ public abstract class Person {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -40,6 +44,7 @@ public abstract class Person {
         this.name = name;
     }
 
+    @Column(name = "money")
     public double getMoney() {
         return money;
     }
@@ -48,11 +53,5 @@ public abstract class Person {
         this.money = money;
     }
 
-    public Set<Film> getFilms() {
-        return films;
-    }
 
-    public void setFilms(Set<Film> films) {
-        this.films = films;
-    }
 }

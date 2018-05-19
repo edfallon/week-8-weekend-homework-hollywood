@@ -16,7 +16,8 @@ public enum Genre {
     NOIR,
     MUSICAL,
     SCIFI,
-    FANTASY
+    FANTASY,
+    CHILDREN
 
 
 
