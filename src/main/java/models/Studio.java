@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,6 +20,7 @@ public class Studio {
     public Studio(String name, double budget) {
         this.name = name;
         this.budget = budget;
+        this.directors = new HashSet<Director>();
     }
 
     @Id
@@ -61,5 +63,9 @@ public class Studio {
 
     public void setDirectors(Set<Director> directors) {
         this.directors = directors;
+    }
+
+    public void addDirector(Director director){
+        this.directors.add(director);
     }
 }

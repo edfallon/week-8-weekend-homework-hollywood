@@ -1,5 +1,7 @@
 package db;
 
+import models.Director;
+import models.Studio;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -56,5 +58,11 @@ public class DBHelper {
             session.close();
         }
         return result;
+    }
+
+    public static void addDirectorToStudio(Studio studio, Director director){
+        studio.addDirector(director);
+        director.addStudio(studio);
+        save(studio);
     }
 }

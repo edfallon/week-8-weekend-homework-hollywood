@@ -33,6 +33,8 @@ public class Runner {
 
         List<Person> people = DBHelper.getAll(Person.class);
 
+        DBHelper.addDirectorToStudio(studio1, director1);
+
 
 
     }

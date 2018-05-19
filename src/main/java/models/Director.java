@@ -44,5 +44,9 @@ public class Director extends Person {
         this.films = films;
     }
 
+    public void addStudio(Studio studio){
+        this.studios.add(studio);
+    }
+
 
 }
