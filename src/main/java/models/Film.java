@@ -6,14 +6,14 @@ public class Film {
 
     private int id;
     private String name;
-    private String genre;
+    private Genre genre;
     private Set<Actor> actors;
     private Director director;
 
     public Film() {
     }
 
-    public Film(String name, String genre, Director director) {
+    public Film(String name, Genre genre, Director director) {
         this.name = name;
         this.genre = genre;
         this.director = director;
@@ -35,11 +35,11 @@ public class Film {
         this.name = name;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
