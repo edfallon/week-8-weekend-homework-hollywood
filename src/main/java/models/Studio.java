@@ -79,4 +79,13 @@ public class Studio {
     public void setFilms(Set<Film> films) {
         this.films = films;
     }
+
+    public void addFilm(Film film){
+        this.films.add(film);
+    }
+
+    public void payActor(Actor actor, double amount){
+        this.budget -= amount;
+        actor.setMoney(actor.getMoney() + amount);
+    }
 }

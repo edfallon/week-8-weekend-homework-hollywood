@@ -25,15 +25,17 @@ public class Runner {
         Actor actor2 = new Actor("Emma", 50000.00);
         DBHelper.save(actor2);
 
-        Film film1 = new Film("Finding Nemo", Genre.ANIMATED, director1);
+        Film film1 = new Film("Finding Nemo", Genre.ANIMATED, director1, studio1);
         DBHelper.save(film1);
 
-        Film film2 = new Film("Captain Philips", Genre.THRILLER, director2);
+        Film film2 = new Film("Captain Philips", Genre.THRILLER, director2, studio2);
         DBHelper.save(film2);
 
         List<Person> people = DBHelper.getAll(Person.class);
 
         DBHelper.addDirectorToStudio(studio1, director1);
+
+        DBHelper.addFilmToStudio(studio1, film1);
 
 
 

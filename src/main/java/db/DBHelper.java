@@ -1,6 +1,7 @@
 package db;
 
 import models.Director;
+import models.Film;
 import models.Studio;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -63,6 +64,11 @@ public class DBHelper {
     public static void addDirectorToStudio(Studio studio, Director director){
         studio.addDirector(director);
         director.addStudio(studio);
+        save(studio);
+    }
+
+    public static void addFilmToStudio(Studio studio, Film film){
+        studio.addFilm(film);
         save(studio);
     }
 }
