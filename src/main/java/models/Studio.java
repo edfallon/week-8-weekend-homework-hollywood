@@ -84,8 +84,8 @@ public class Studio {
         this.films.add(film);
     }
 
-    public void payActor(Actor actor, double amount){
+    public void payActor(Person person, double amount){
         this.budget -= amount;
-        actor.setMoney(actor.getMoney() + amount);
+        person.setMoney(person.getMoney() + amount);
     }
 }
