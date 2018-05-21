@@ -37,6 +37,10 @@ public class Runner {
 
         DBHelper.addFilmToStudio(studio1, film1);
 
+        DBHelper.addActorToFilm(film1, actor1);
+
+        List<Film> filmsOfActorByGenre = DBHelper.findAllFilmsByGenre(actor1, Genre.ANIMATED);
+
 
 
     }

@@ -1,15 +1,16 @@
 package db;
 
-import models.Director;
-import models.Film;
-import models.Studio;
+import models.*;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class DBHelper {
 
@@ -71,4 +72,27 @@ public class DBHelper {
         studio.addFilm(film);
         save(studio);
     }
+
+    public static void addActorToFilm(Film film, Actor actor){
+        film.addActor(actor);
+        actor.addFilm(film);
+        save(film);
+    }
+
+    public Set<Film> findAllFilmsByGenre(Actor actor, Genre genre){
+        Set<Film> copyOfFilms = actor.getFilms();
+        Set<Film> filmsWithSelectedGenre = new HashSet<Film>();
+        for (Film film : copyOfFilms){
+            if (film.getGenre() == genre){
+                filmsWithSelectedGenre.add(film);
+            }
+            else{
+                return null;
+            }
+        }
+        return filmsWithSelectedGenre;
+
+    }
+
+
 }

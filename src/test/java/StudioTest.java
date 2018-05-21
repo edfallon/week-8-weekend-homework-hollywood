@@ -18,13 +18,13 @@ public class StudioTest {
 
     @Test
     public void canPayActorActorsMoneyGoesUP() {
-        studio1.payActor(actor1, 10000.00);
+        studio1.payPerson(actor1, 10000.00);
         assertEquals(20000.00, actor1.getMoney(), 0.01);
     }
 
     @Test
     public void canPayActorStudioBudgetGoesDown() {
-        studio1.payActor(actor1, 10000.00);
+        studio1.payPerson(actor1, 10000.00);
         assertEquals(990000.00, studio1.getBudget(), 0.01);
     }
 }

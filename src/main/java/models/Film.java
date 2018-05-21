@@ -87,5 +87,9 @@ public class Film {
         this.studio = studio;
     }
 
+    public void addActor(Actor actor){
+        this.actors.add(actor);
+    }
+
 
 }
